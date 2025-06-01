@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: azure;
+}
+
+.wrapper {
+  text-align: center;
+}
+
+.landingpage_content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 2rem 0.5rem;
+  text-align: center;
+}
+
+.landingpage_content h1 {
+  margin: auto;
+  color: rgb(0, 97, 0);
+  text-transform: uppercase;
+}
+
+.activity_image {
+  display: flex;
+  justify-content: center;
+}
+
+.activity_image img {
+  width: 60%;
+}
+
+@media (max-width: 768px) {
+  body {
+    background-position: center;
+  }
+}
