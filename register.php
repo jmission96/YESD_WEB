@@ -63,7 +63,7 @@ if (isset($_POST['submit'])) {
   <div class="wrapper">
     <div class="container">
       <h1>Register</h1>
-      <form action="" method="post" id="register">
+      <form action="" method="post" enctype="multipart/form-data" id="register">
 
         <div class="form-element">
           <label>Full Name:</label>

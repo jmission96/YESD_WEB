@@ -28,7 +28,7 @@ include_once("../profile/header.php");
 ?>
   <div class="profile_card">
     <div class="profile_img">
-      <img src="<?php echo $row['image'] ?>">
+      <img src="../images/profile/<?php echo $row['image'] ?>">
     </div>
     <div class="profile_name">
     <h2><?php echo $row['fullname'] ?></h2>
@@ -59,6 +59,16 @@ include_once("../profile/header.php");
     display: inline-block;
     background: rgba(201, 255, 255, 0.14);
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  .profile_img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 310px;
+    height: 310px;
+    border-radius: 50%;
+    border: rgba(0, 255, 157, 0.66) solid 1px;
   }
   .profile_img img {
     width: 300px;

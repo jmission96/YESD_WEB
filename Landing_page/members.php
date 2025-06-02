@@ -33,7 +33,7 @@ $members = $con->query($sql_members) or die($con->error);
     <?php while ($row_members = $members->fetch_assoc()) { ?>
       <div class="member_card">
         <div class="member_img">
-          <img src="<?php echo htmlspecialchars($row_members['image']); ?>" alt="Member Image">
+          <img src="../images/profile/<?php echo htmlspecialchars($row_members['image']); ?>" alt="Member Image">
         </div>
         <div class="fullname">
           <h3><?php echo htmlspecialchars($row_members['fullname']); ?></h3>

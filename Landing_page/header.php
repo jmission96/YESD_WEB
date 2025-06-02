@@ -16,7 +16,7 @@
     <a href="../profile/profile.php">
       <div class="profile_img">
         <h3><?php echo $row['username']; ?></h3>
-        <img src="<?php echo $row['image']; ?>" alt="Logo">
+        <img src="../images/profile/<?php echo $row['image']; ?>" alt="Logo">
       </div>
     </a>
   </div>
