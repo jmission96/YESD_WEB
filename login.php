@@ -19,6 +19,7 @@ if (isset($_POST['login'])) {
 
   if ($total > 0) {
     $row = $result->fetch_assoc();
+    $_SESSION['id'] = $row['id'];
     $_SESSION['UserLogin'] = $row['username'];
     $_SESSION['Role'] = $row['role'];
     header("Location: Landing_page/landingpage.php");

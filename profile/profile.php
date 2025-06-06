@@ -101,6 +101,7 @@ include_once("../profile/header.php");
     text-decoration: none;
     font-size: 20px;
     color: white;
+    font-weight: bold;
   }
 
   .edit a:hover{

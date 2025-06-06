@@ -10,6 +10,11 @@ $username = $_SESSION['UserLogin'];
 $sql = "SELECT * FROM accounts WHERE `username` = '$username'";
 $profile = $con->query($sql) or die($con->error);
 $row = $profile->fetch_assoc();
+
+$sql_recent_activity = "SELECT * FROM activities WHERE `date` <= CURDATE() ORDER BY `date` DESC LIMIT 1";
+$recent_activity = $con->query($sql_recent_activity) or die($con->error);
+$row_recent_activity = $recent_activity->fetch_assoc();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +25,7 @@ $row = $profile->fetch_assoc();
   <title>YESD</title>
   <link rel="stylesheet" href="../css/landingpage.css">
   <link rel="stylesheet" href="../css/image_slide.css">
+  <script src="landingpage.js"></script>
 </head>
 
 <body>
@@ -45,35 +51,10 @@ $row = $profile->fetch_assoc();
   
   <div class="landingpage_content">
     <h1>Check out Our Recent Activity</h1>
-    <h2 id="recent_act_post">Recent Activity</h2>
     <div class="activity_image">
-      <img src="../images/recent_activity.jpg" alt="Recent Activity Image">
+      <img src="../images/activities/<?php echo $row_recent_activity['act_image'] ?>" alt="Recent Activity Image">
     </div>
     <a href="https://www.facebook.com/share/p/1CF81Zurvx/" target="_blank">See in facebook</a>
   </div>
 </body>
-<script>
-  const slideContainer = document.getElementById('slide');
-  const slides = slideContainer.querySelectorAll('img');
-  const slideCount = slides.length;
-  let currentIndex = 0;
-
-  const updateSlide = () => {
-    slideContainer.scrollTo({
-      left: currentIndex * slideContainer.clientWidth,
-      behavior: 'smooth'
-    });
-  };
-
-  document.getElementById('arrow_left').addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + slideCount) % slideCount;
-    updateSlide();
-  });
-
-  document.getElementById('arrow_right').addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % slideCount;
-    updateSlide();
-  });
-</script>
-
 </html>

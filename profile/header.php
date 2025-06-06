@@ -13,9 +13,25 @@
       <a href="../Landing_page/activities.php">Activities</a>
       <a href="../Landing_page/checklist.php">Cleanup Checklist</a>
     </div>
-    <div class="logout">
-      <a href="../logout.php">Logout</a>
-    </div>
+    <?php
+    $currentPage = basename($_SERVER['PHP_SELF']);
+    if ($currentPage === 'profile.php') {
+      ?>
+      <div class="logout">
+        <a href="../logout.php">Logout</a>
+      </div>
+      <?php
+    } elseif ($currentPage === 'edit_profile.php') {
+      ?>
+      <a href="profile.php">
+      <div class="header_profile_img">
+        <h3><?php echo $row['username']; ?></h3>
+        <img src="../images/profile/<?php echo $row['image']; ?>" alt="Logo">
+      </div>
+    </a>
+      <?php
+    }
+    ?>
   </div>
 </div>
 <style>
@@ -91,4 +107,33 @@
     color: lightskyblue;
     text-decoration: underline;
   }
+
+  .header_profile_img {
+    margin-left: 30px;
+    display: flex;
+  }
+
+  .header_profile_img:hover h3 {
+    color: lightskyblue;
+    text-decoration: underline
+  }
+
+  .header_profile_img:hover img {
+    position: relative;
+    filter: brightness(0.5) sepia(1) hue-rotate(170deg) saturate(5);
+  }
+
+  .header_profile_img h3{
+    margin-right: 20px;
+    color: white;
+    text-transform: capitalize;
+    margin-top: .9rem;
+  }
+  .header_profile_img img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+</style>
 </style>
