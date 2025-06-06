@@ -13,6 +13,15 @@ $row = $profile->fetch_assoc();
 
 $sql_members = "SELECT * FROM accounts ORDER BY username ASC";
 $members = $con->query($sql_members) or die($con->error);
+
+$search = isset($_GET['search']) ? $_GET['search'] : '';
+$sql_members = "SELECT * FROM accounts";
+if (!empty($search)) {
+  $search_safe = $con->real_escape_string($search);
+  $sql_members .= " WHERE fullname LIKE '%$search_safe%' OR program LIKE '%$search_safe%'";
+}
+$sql_members .= " ORDER BY username ASC";
+$members = $con->query($sql_members) or die($con->error);
 ?>
 
 <!DOCTYPE html>
@@ -28,6 +37,13 @@ $members = $con->query($sql_members) or die($con->error);
 <body>
   <?php include_once("header.php"); ?>
   <h1>Members</h1>
+
+  <form method="GET" style="text-align:center; margin-top: 1rem;">
+    <input type="text" name="search" placeholder="Search name or course"
+      value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>"
+      style="padding: 8px; width: 300px;">
+    <button type="submit" style="padding: 8px 12px;">Search</button>
+  </form>
 
   <div class="members_container">
     <?php while ($row_members = $members->fetch_assoc()) { ?>
@@ -45,7 +61,9 @@ $members = $con->query($sql_members) or die($con->error);
 
         <div class="details">
           <h4>facebook: </h4>
-          <a href="<?php echo htmlspecialchars($row_members['link_to_fb']); ?>" target="_blank"><p><?php echo htmlspecialchars($row_members['fullname']); ?></p></a>
+          <a href="<?php echo htmlspecialchars($row_members['link_to_fb']); ?>" target="_blank">
+            <p><?php echo htmlspecialchars($row_members['fullname']); ?></p>
+          </a>
         </div>
       </div>
     <?php } ?>
@@ -78,7 +96,7 @@ $members = $con->query($sql_members) or die($con->error);
     border: 1px solid rgba(0, 122, 0, 0.3);
     padding: 2rem;
     border-radius: 10px;
-    background-color:rgba(201, 255, 255, 0.14);
+    background-color: rgba(201, 255, 255, 0.14);
     text-align: left;
   }
 
@@ -127,7 +145,7 @@ $members = $con->query($sql_members) or die($con->error);
     margin-left: 10px;
   }
 
-  .details a:hover{
+  .details a:hover {
     color: lightskyblue;
     text-decoration: underline;
   }

@@ -48,13 +48,122 @@ $row_recent_activity = $recent_activity->fetch_assoc();
       <button class="arrow right" id="arrow_right">&#10095;</button>
     </div>
   </section>
-  
-  <div class="landingpage_content">
+  <div class="page_devider">
     <h1>Check out Our Recent Activity</h1>
-    <div class="activity_image">
-      <img src="../images/activities/<?php echo $row_recent_activity['act_image'] ?>" alt="Recent Activity Image">
+    <div class="landingpage_content">
+      <div class="act_name">
+        <h2><?php echo $row_recent_activity['act_name'] ?></h2>
+      </div>
+
+      <div class="activity_image">
+        <img src="../images/activities/<?php echo $row_recent_activity['act_image'] ?>" alt="Recent Activity Image">
+      </div>
+
+      <div class="details">
+        <h4>Date: </h4>
+        <p><?php echo date("j F Y", strtotime($row_recent_activity['date'])); ?></p>
+      </div>
+      <div class="details">
+        <h4>Location: </h4>
+        <p><?php echo htmlspecialchars($row_recent_activity['location']); ?></p>
+      </div>
+      <div class="descriptions">
+        <p class="descriptions"><?php echo htmlspecialchars($row_recent_activity['description']); ?></p>
+      </div>
+      <div class="facebook_button">
+        <a href="<?php echo htmlspecialchars($row_recent_activity['facebook']); ?>" target="_blank">View on Facebook</a>
+      </div>
     </div>
-    <a href="https://www.facebook.com/share/p/1CF81Zurvx/" target="_blank">See in facebook</a>
   </div>
 </body>
+
+<style>
+  h1 {
+    margin: 32px 0;
+    text-align: center;
+    color: green;
+    text-transform: uppercase;
+  }
+
+  .page_devider {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 0;
+  }
+
+  .landingpage_content {
+    width: 50%;
+    justify-content: center;
+    margin: 0 auto;
+    border: 1px solid rgba(0, 122, 0, 0.3);
+    padding: 4rem;
+    border-radius: 10px;
+    background-color: rgba(201, 255, 255, 0.14);
+    text-align: left;
+  }
+
+  .activity_image {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 2rem;
+  }
+
+  .activity_image img {
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .descriptions {
+    margin-top: 1rem;
+    line-height: 1.25;
+    text-indent: 2em;
+  }
+
+  .act_name {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .act_name h2 {
+    font-size: 2rem;
+    text-transform: capitalize;
+    color: green;
+  }
+
+  .details {
+    display: flex;
+    justify-content: left;
+  }
+
+  .details h4 {
+    margin-right: 0.5rem;
+  }
+
+  .facebook_button{
+    text-align: center;
+    margin: 30px 0 20px 0;
+  }
+
+  .facebook_button a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 5px 15px;
+    border-radius:1rem;
+    border: grey solid 1px;
+    background-color: rgb(0, 255, 64);
+    font-weight: bold;
+  }
+
+  .facebook_button a:hover{
+    background-color: rgb(0, 255, 200);
+  }
+</style>
+
 </html>

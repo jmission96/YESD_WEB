@@ -46,6 +46,9 @@ include_once("profile_logic.php");
       <div class="profile_details">
         <label for="username">Username:</label>
         <input type="text" name="username" value="<?php echo $row['username'] ?>">
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" value="<?php echo $row['password'] ?>"
+          placeholder="ex. 12345678">
         <label for="program">Program:</label>
         <input type="text" name="program" value="<?php echo $row['program'] ?>">
         <label for="role">Access Type:</label>

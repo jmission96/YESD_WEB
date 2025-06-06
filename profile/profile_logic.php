@@ -8,6 +8,7 @@ if (isset($_POST['save_changes'])) {
   $username = $_POST['username'];
   $program = $_POST['program'];
   $role = $_POST['role'];
+  $password = $_POST['password'];
   $admin_password = $_POST['admin_password'];
   $fb_link = $_POST['fb_link'];
   $admin_password_curent_value = "admin123";
@@ -15,7 +16,7 @@ if (isset($_POST['save_changes'])) {
   if ($role === "Admin" && $admin_password_curent_value !== $admin_password) {
     echo "<script>alert('Invalid admin password. Please try again.');</script>";
   } else {
-    $sql = "UPDATE accounts SET `fullname`='$fullname', `username`='$username', `program`='$program', `role`='$role', `link_to_fb`='$fb_link'";
+    $sql = "UPDATE accounts SET `password`='$password', `fullname`='$fullname', `username`='$username', `program`='$program', `role`='$role', `link_to_fb`='$fb_link'";
 
     if (!empty($image)) {
       $sql .= ", `image`='$image'";
