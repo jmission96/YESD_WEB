@@ -112,10 +112,11 @@ $activities = $con->query($sql_activities) or die($con->error);
   }
 
   .activity_card {
-    position: relative margin: 20px;
+    position: relative;
+    margin: 20px;
     border: 1px solid rgba(0, 122, 0, 0.3);
     border-radius: 16px;
-    padding: 20px;
+    padding: 20px 20px 150px 20px;
     background: rgba(201, 255, 255, 0.14);
     text-align: left;
     margin: 2rem 1rem;
@@ -124,7 +125,8 @@ $activities = $con->query($sql_activities) or die($con->error);
 
   .activity_img img {
     width: 100%;
-    height: auto;
+    height: 400px;
+    object-fit: cover;
     border-radius: 8px;
   }
 
@@ -213,6 +215,28 @@ $activities = $con->query($sql_activities) or die($con->error);
     width: 100%;
     display: flex;
     justify-content: center;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+  }
+
+  .checklist_button,
+  .facebook_button,
+  .coming_soon_button {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .checklist_button a,
+  .facebook_button a,
+  .coming_soon_button a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
   }
 
   .checklist_button,
@@ -258,10 +282,10 @@ $activities = $con->query($sql_activities) or die($con->error);
   .checklist_button a:hover {
     background-color: rgb(0, 255, 200);
     color: white;
-    border:  rgb(0, 255, 200) solid 3px;
+    border: rgb(0, 255, 200) solid 3px;
   }
 
-  .coming_soon_button {    
+  .coming_soon_button {
     padding: 15px 12px;
     background-color: rgb(0, 209, 7);
     border: rgb(0, 240, 208);
@@ -274,7 +298,7 @@ $activities = $con->query($sql_activities) or die($con->error);
     text-align: center;
     font-weight: bold;
     opacity: 0.4;
-  } 
+  }
 </style>
 
 </html>

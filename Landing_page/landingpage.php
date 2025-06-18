@@ -174,6 +174,24 @@ $row_recent_activity = $recent_activity->fetch_assoc();
   }
 
   .checklist_button,
+  .facebook_button,
+  .coming_soon_button {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .checklist_button a,
+  .facebook_button a,
+  .coming_soon_button a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+  }
+
+  .checklist_button,
   .facebook_button {
     border-radius: 20px;
     cursor: pointer;
