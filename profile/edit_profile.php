@@ -181,23 +181,26 @@ include_once("profile_logic.php");
   }
 
   .edit {
-    margin-top: 2rem;
-
+    margin: 2rem 0;
+    
   }
 
   .edit button {
-    background-color: rgb(0, 255, 64);
-    padding: 5px 10px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-size: 20px;
+    width: 80%;
+    background-color: rgb(0, 255, 8);
+    border-radius: 20px;
+    border: rgb(0, 240, 208);
     color: white;
-    border: gray solid 1px;
+    cursor: pointer;
+    padding: 10px;
+    letter-spacing: 3px;
+    font-size: 22px;
   }
 
   .edit button:hover {
     background-color: rgb(0, 255, 200);
   }
+
 </style>
 
 </html>

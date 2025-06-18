@@ -11,7 +11,6 @@
       <a href="../Landing_page/landingpage.php">Home</a>
       <a href="../Landing_page/members.php">Members</a>
       <a href="../Landing_page/activities.php">Activities</a>
-      <a href="../Landing_page/checklist.php">Cleanup Checklist</a>
     </div>
     <?php
     $currentPage = basename($_SERVER['PHP_SELF']);

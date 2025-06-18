@@ -42,6 +42,9 @@ if (isset($_POST['login'])) {
 <body>
   <div class="wrapper">
     <div class="container">
+      <div class="back">
+        <a href="index.php"><img src="images/back.png" class="back_button"></a>
+      </div>
       <h1>Login</h1>
       <br>
       <div class="login_logo">
@@ -58,7 +61,7 @@ if (isset($_POST['login'])) {
           <input type="password" name="password" id="password" placeholder="Enter Password" required>
         </div>
 
-        <div class="form-element">
+        <div class="form-button">
           <button type="submit" name="login" id="login">Login</button>
         </div>
 
@@ -72,6 +75,10 @@ if (isset($_POST['login'])) {
 
 </body>
 <style>
+  body {
+    padding: 3rem;
+  }
+
   .container {
     width: 25%;
   }
@@ -93,6 +100,19 @@ if (isset($_POST['login'])) {
   }
 
   @media (max-width: 768px) {
+    body {
+      padding: 0;
+    }
+
+    .container {
+      width: 90%;
+      /* from 25% to 90% on small screens */
+      max-width: 400px;
+      /* limit width on large screens */
+      margin: auto;
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+
     h1 {
       font-size: 36px;
     }
@@ -100,6 +120,20 @@ if (isset($_POST['login'])) {
     img {
       width: 70%;
     }
+  }
+
+  .back a {
+    display: flex;
+    align-items: left;
+    width: 5rem;
+  }
+
+  .back_button {
+    width: 30px;
+  }
+
+  .back_button:hover {
+    filter: brightness(0) saturate(100%) invert(64%) sepia(30%) saturate(1200%) hue-rotate(175deg) brightness(100%) contrast(105%);
   }
 </style>
 

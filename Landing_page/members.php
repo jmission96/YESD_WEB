@@ -42,7 +42,7 @@ $members = $con->query($sql_members) or die($con->error);
     <input type="text" name="search" placeholder="Search name or course"
       value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>"
       style="padding: 8px; width: 300px;">
-    <button type="submit" style="padding: 8px 12px;">Search</button>
+    <button type="submit" class="button">Search</button>
   </form>
 
   <div class="members_container">
@@ -53,6 +53,7 @@ $members = $con->query($sql_members) or die($con->error);
         </div>
         <div class="fullname">
           <h3><?php echo htmlspecialchars($row_members['fullname']); ?></h3>
+          <p><?php echo htmlspecialchars($row_members['username']); ?></p>
         </div>
         <div class="details">
           <h4>Course: </h4>
@@ -61,9 +62,15 @@ $members = $con->query($sql_members) or die($con->error);
 
         <div class="details">
           <h4>facebook: </h4>
-          <a href="<?php echo htmlspecialchars($row_members['link_to_fb']); ?>" target="_blank">
-            <p><?php echo htmlspecialchars($row_members['fullname']); ?></p>
-          </a>
+
+          <p><?php if (!empty($row_members['link_to_fb'])) { ?>
+              <a href="<?php echo htmlspecialchars($row_members['link_to_fb']); ?>"
+                target="_blank"><?php echo htmlspecialchars($row_members['fullname']); ?></a>
+            <?php } else {
+            echo "No Facebook link";
+          } ?>
+          </p>
+
         </div>
       </div>
     <?php } ?>
@@ -80,6 +87,17 @@ $members = $con->query($sql_members) or die($con->error);
     margin-top: 2rem;
     color: green;
     text-transform: uppercase;
+  }
+
+  .button {
+    padding: 8px 12px;
+    background-color: rgb(0, 209, 7);
+    border: rgb(0, 240, 208);
+    color: white;
+  }
+
+  .button:hover {
+    background-color: rgb(0, 255, 200);
   }
 
   .members_container {
@@ -119,11 +137,19 @@ $members = $con->query($sql_members) or die($con->error);
     object-fit: cover;
   }
 
+  .fullname {
+    margin: 2rem 0;
+    text-align: center;
+  }
+
   .fullname h3 {
     font-size: 30px;
-    margin: 2rem 0;
     color: green;
-    text-align: center;
+  }
+
+  .fullname p {
+    font-size: 15px;
+    font-style: italic;
   }
 
   .details {

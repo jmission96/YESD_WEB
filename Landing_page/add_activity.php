@@ -1,6 +1,5 @@
 <?php
 include_once("../connection/landingpage_connection.php");
-$con = connection();
 
 if (isset($_POST['submit'])) {
   // Sanitize inputs
@@ -69,7 +68,9 @@ if (isset($_POST['submit'])) {
       <input type="file" name="act_image" accept="image/*" required>
       <label for="facebook">Facebook Link</label>
       <input type="url" name="facebook" placeholder="Link to facebook post..." required>
-      <button type="submit" name="submit">Add Activity</button>
+      <div class="button">
+        <button type="submit" name="submit">Add Activity</button>
+      </div>
     </form>
   </div>
 
@@ -93,7 +94,7 @@ if (isset($_POST['submit'])) {
   h1 {
     text-align: center;
     color: green;
-    margin-bottom: 20px;
+    margin-bottom: 3rem;
   }
 
   form {
@@ -112,14 +113,29 @@ if (isset($_POST['submit'])) {
     font-size: 16px;
   }
 
-  button {
-    padding: 10px;
-    background-color: green;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
+  .button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
+
+  button {
+    width: 60%;
+    padding: 12px;
+    margin: 2rem 0;
+    letter-spacing: 6px;
+    font-size: 22px;
+    background-color: rgb(0, 255, 8);
+    border-radius: 20px;
+    border: rgb(0, 240, 208);
+    color: white;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color:rgb(0, 255, 200);
+  }
+
 </style>
+
 </html>

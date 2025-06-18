@@ -70,9 +70,31 @@ $row_recent_activity = $recent_activity->fetch_assoc();
       <div class="descriptions">
         <p class="descriptions"><?php echo htmlspecialchars($row_recent_activity['description']); ?></p>
       </div>
-      <div class="facebook_button">
-        <a href="<?php echo htmlspecialchars($row_recent_activity['facebook']); ?>" target="_blank">View on Facebook</a>
-      </div>
+
+      
+      <div class="act_button">
+            <?php
+            $today = date("Y-m-d");
+            $act_date = $row_recent_activity['date'];
+
+
+            if ($act_date == $today) {
+              echo '<div class="checklist_button">
+          <a href="checklist.php?activity_id=' . $row_recent_activity['id'] . '">Open Checklist</a>
+        </div>';
+            } elseif ($act_date < $today) {
+              echo '<div class="facebook_button">
+          <a href="' . htmlspecialchars($row_recent_activity['facebook']) . '" target="_blank">View on Facebook</a>
+        </div>';
+            } elseif ($act_date > $today) {
+              echo '<div class="coming_soon_button">
+          <a href="#" >Coming Soon</a>
+        </div>';
+            }
+            ?>
+          </div>
+
+
     </div>
   </div>
 </body>
@@ -145,25 +167,72 @@ $row_recent_activity = $recent_activity->fetch_assoc();
     margin-right: 0.5rem;
   }
 
-  .facebook_button{
-    text-align: center;
-    margin: 30px 0 20px 0;
+   .act_button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
-  .facebook_button a {
-    color: white;
-    font-size: 20px;
-    text-decoration: none;
-    padding: 5px 15px;
-    border-radius:1rem;
-    border: grey solid 1px;
-    background-color: rgb(0, 255, 64);
+  .checklist_button,
+  .facebook_button {
+    border-radius: 20px;
+    cursor: pointer;
+    padding: 15px;
+    margin: 2rem 0;
+    letter-spacing: 3px;
+    width: 40%;
+    text-align: center;
     font-weight: bold;
   }
 
-  .facebook_button a:hover{
+  .coming_soon_button a,
+  .facebook_button a {
+    color: white;
+  }
+
+  .facebook_button {
+    padding: 15px 12px;
+    background-color: rgb(0, 209, 7);
+    border: rgb(0, 240, 208);
+    font-size: 18px;
+  }
+
+  .facebook_button:hover {
     background-color: rgb(0, 255, 200);
   }
+
+  .checklist_button a {
+    color: rgb(0, 209, 7);
+  }
+
+  .checklist_button {
+    padding: 15px 12px;
+    border: rgb(0, 209, 7) solid 3px;
+    font-size: 18px;
+  }
+
+  .checklist_button:hover,
+  .checklist_button:hover a,
+  .checklist_button a:hover {
+    background-color: rgb(0, 255, 200);
+    color: white;
+    border: rgb(0, 255, 200) solid 3px;
+  }
+
+  .coming_soon_button {    
+    padding: 15px 12px;
+    background-color: rgb(0, 209, 7);
+    border: rgb(0, 240, 208);
+    font-size: 18px;
+    pointer-events: none;
+    border-radius: 20px;
+    margin: 2rem 0;
+    letter-spacing: 3px;
+    width: 40%;
+    text-align: center;
+    font-weight: bold;
+    opacity: 0.4;
+  } 
 </style>
 
 </html>

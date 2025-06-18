@@ -11,7 +11,6 @@
       <a href="landingpage.php">Home</a>
       <a href="members.php">Members</a>
       <a href="activities.php">Activities</a>
-      <a href="checklist.php">Cleanup Checklist</a>
     </div>
     <a href="../profile/profile.php">
       <div class="profile_img">

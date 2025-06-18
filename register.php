@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
     } else {
       $sql = "INSERT INTO accounts (`fullname`, `username`, `password`, `program`, `role`, `link_to_fb`, `image`) VALUES ('$fullname', '$username', '$password', '$program', '$role', '$facebook_profile', '$image')";
       if ($con->query($sql) === TRUE) {
-    
+
         if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
           header("Location: login.php");
         } else {
@@ -43,7 +43,7 @@ if (isset($_POST['submit'])) {
       } else {
         echo "<script>alert('Error: " . $sql . "<br>" . $con->error . "');</script>";
       }
-    }    
+    }
   }
 }
 ?>
@@ -62,6 +62,9 @@ if (isset($_POST['submit'])) {
 <body>
   <div class="wrapper">
     <div class="container">
+      <div class="back">
+        <a href="index.php"><img src="images/back.png" class="back_button"></a>
+      </div> 
       <h1>Register</h1>
       <form action="" method="post" enctype="multipart/form-data" id="register">
 
@@ -97,7 +100,8 @@ if (isset($_POST['submit'])) {
           </div>
 
           <div class="form-element">
-            <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Password" required>
+            <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Password"
+              required>
           </div>
         </div>
 
@@ -110,13 +114,13 @@ if (isset($_POST['submit'])) {
           <label>Facebook Profile Link:</label>
           <input type="text" name="facebook-profile" id="facebook-profile" placeholder="Optional">
         </div>
-        
+
         <div class="form-element" id="image-container">
           <label>2x2 ID PICTURE:</label>
           <input type="file" name="image" id="image" required>
         </div>
 
-        <div class="form-element">
+        <div class="form-button">
           <button type="submit" name="submit" id="submit">Submit</button>
         </div>
 
@@ -130,6 +134,9 @@ if (isset($_POST['submit'])) {
 
 </body>
 <style>
+  body {
+    padding: 3rem;
+  }
 
   .container {
     width: 50%;
@@ -165,6 +172,20 @@ if (isset($_POST['submit'])) {
     .container {
       width: 80%;
     }
+  }
+
+  .back a {
+    display: flex;
+    align-items: left;
+    width: 5rem;
+  }
+
+  .back_button {
+    width: 30px;
+  }
+
+  .back_button:hover {
+    filter: brightness(0) saturate(100%) invert(64%) sepia(30%) saturate(1200%) hue-rotate(175deg) brightness(100%) contrast(105%);
   }
 </style>
 

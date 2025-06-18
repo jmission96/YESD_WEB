@@ -23,15 +23,15 @@ $row = $profile->fetch_assoc();
 </head>
 
 <body>
-<?php
-include_once("../profile/header.php");
-?>
+  <?php
+  include_once("../profile/header.php");
+  ?>
   <div class="profile_card">
     <div class="profile_img">
       <img src="../images/profile/<?php echo $row['image'] ?>">
     </div>
     <div class="profile_name">
-    <h2><?php echo $row['fullname'] ?></h2>
+      <h2><?php echo $row['fullname'] ?></h2>
     </div>
     <div class="profile_details">
       <p>Username: <?php echo $row['username'] ?></p>
@@ -51,14 +51,14 @@ include_once("../profile/header.php");
     text-align: center;
   }
 
-  .profile_card{
+  .profile_card {
     margin-top: 50px;
     border: 1px solid rgba(0, 122, 0, 0.3);
     border-radius: 16px;
     padding: 2rem 5rem;
     display: inline-block;
     background: rgba(201, 255, 255, 0.14);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
 
   .profile_img {
@@ -70,6 +70,7 @@ include_once("../profile/header.php");
     border-radius: 50%;
     border: rgba(0, 255, 157, 0.66) solid 1px;
   }
+
   .profile_img img {
     width: 300px;
     height: 300px;
@@ -90,23 +91,26 @@ include_once("../profile/header.php");
     margin: 5px 0;
   }
 
-  .edit{
-    margin-top: 2rem;
-
-  }
-  .edit a{
-    background-color: rgb(0, 255, 64);
-    padding: 5px 10px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-size: 20px;
+  .edit {
+    background-color: rgb(0, 255, 8);
+    border-radius: 20px;
+    border: rgb(0, 240, 208);
     color: white;
-    font-weight: bold;
+    cursor: pointer;
+    padding: 10px;
+    margin: 2rem 0;
+    letter-spacing: 3px;
   }
 
-  .edit a:hover{
+  .edit a {
+    color: white;
+    font-size: 22px;
+  }
+
+  .edit:hover {
     background-color: rgb(0, 255, 200);
   }
+
 </style>
 
 </html>
